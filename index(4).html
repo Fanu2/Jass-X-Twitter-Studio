@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JASS X / TWITTER STUDIO</title>
+<style>
+:root{--bg:#080f1d;--panel:#101b2e;--panel2:#14233a;--line:#26364e;--text:#f8fafc;--muted:#94a3b8;--blue:#3b82f6;--soft:#93c5fd}
+*{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at 90% 0,#172554 0,transparent 30%),var(--bg);color:var(--text);font-family:"Segoe UI",Arial,sans-serif}
+.wrap{max-width:1250px;margin:auto;padding:42px 24px 65px}
+.brand{font-size:12px;font-weight:800;letter-spacing:.2em;color:var(--soft)} h1{font-size:42px;margin:8px 0} .sub{color:var(--muted);margin:0 0 26px}
+.toolbar{display:flex;gap:12px;align-items:center;margin-bottom:18px} input{flex:1;padding:14px 16px;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:10px;font-size:14px;outline:none} input:focus{border-color:var(--blue)}
+.stats{background:var(--panel);border:1px solid var(--line);padding:14px 17px;border-radius:11px;color:var(--muted);margin-bottom:18px} .stats b{color:var(--text)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px} .card{display:flex;gap:15px;padding:18px;background:rgba(16,27,46,.96);border:1px solid var(--line);border-radius:13px;transition:.15s} .card:hover{background:var(--panel2);border-color:#3b82f6;transform:translateY(-2px)} .num{color:#64748b;font-weight:800;font-size:12px;padding-top:2px} .cat{font-size:10px;color:var(--soft);text-transform:uppercase;letter-spacing:.08em;font-weight:800} h2{font-size:16px;margin:5px 0 8px} a{color:#93c5fd;text-decoration:none;font-size:13px} a:hover{text-decoration:underline} footer{margin-top:32px;color:#64748b;font-size:12px}
+@media(max-width:650px){h1{font-size:31px}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body><div class="wrap">
+<div class="brand">JASS X / TWITTER STUDIO</div>
+<h1>100 Pages to Follow</h1>
+<p class="sub">A curated launchpad for AI, technology, research, developers and open source.</p>
+<div class="toolbar"><input id="search" placeholder="⌕  Search pages, handles or categories..." aria-label="Search"></div>
+<div class="stats"><b>100 curated pages</b> · Click any page to open its X profile <span id="result"></span></div>
+<main class="grid" id="grid"><article class="card" data-search="openai openai ai labs">
+      <div class="num">01</div>
+      <div class="body"><div class="cat">AI Labs</div>
+      <h2>OpenAI</h2>
+      <a href="https://x.com/OpenAI" target="_blank" rel="noopener">@@OpenAI ↗</a></div>
+    </article><article class="card" data-search="openai developers openaidevs developer / api">
+      <div class="num">02</div>
+      <div class="body"><div class="cat">Developer / API</div>
+      <h2>OpenAI Developers</h2>
+      <a href="https://x.com/OpenAIDevs" target="_blank" rel="noopener">@@OpenAIDevs ↗</a></div>
+    </article><article class="card" data-search="anthropic anthropicai ai labs">
+      <div class="num">03</div>
+      <div class="body"><div class="cat">AI Labs</div>
+      <h2>Anthropic</h2>
+      <a href="https://x.com/AnthropicAI" target="_blank" rel="noopener">@@AnthropicAI ↗</a></div>
+    </article><article class="card" data-search="google deepmind googledeepmind ai labs">
+      <div class="num">04</div>
+      <div class="body"><div class="cat">AI Labs</div>
+      <h2>Google DeepMind</h2>
+      <a href="https://x.com/GoogleDeepMind" target="_blank" rel="noopener">@@GoogleDeepMind ↗</a></div>
+    </article><article class="card" data-search="google ai googleai ai labs">
+      <div class="num">05</div>
+      <div class="body"><div class="cat">AI Labs</div>
+      <h2>Google AI</h2>
+      <a href="https://x.com/GoogleAI" target="_blank" rel="noopener">@@GoogleAI ↗</a></div>
+    </article><article class="card" data-search="ai at meta aiatmeta ai labs">
+      <div class="num">06</div>
+      <div class="body"><div class="cat">AI Labs</div>
+      <h2>AI at Meta</h2>
+      <a href="https://x.com/AIatMeta" target="_blank" rel="noopener">@@AIatMeta ↗</a></div>
+    </article><article class="card" data-search="mistral ai mistralai ai labs">
+      <div class="num">07</div>
+      <div class="body"><div class="cat">AI Labs</div>
+      <h2>Mistral AI</h2>
+      <a href="https://x.com/MistralAI" target="_blank" rel="noopener">@@MistralAI ↗</a></div>
+    </article><article class="card" data-search="xai xai ai labs">
+      <div class="num">08</div>
+      <div class="body"><div class="cat">AI Labs</div>
+      <h2>xAI</h2>
+      <a href="https://x.com/xai" target="_blank" rel="noopener">@@xai ↗</a></div>
+    </article><article class="card" data-search="hugging face huggingface open source ai">
+      <div class="num">09</div>
+      <div class="body"><div class="cat">Open Source AI</div>
+      <h2>Hugging Face</h2>
+      <a href="https://x.com/huggingface" target="_blank" rel="noopener">@@huggingface ↗</a></div>
+    </article><article class="card" data-search="nvidia ai nvidiaai ai hardware">
+      <div class="num">10</div>
+      <div class="body"><div class="cat">AI Hardware</div>
+      <h2>NVIDIA AI</h2>
+      <a href="https://x.com/NVIDIAAI" target="_blank" rel="noopener">@@NVIDIAAI ↗</a></div>
+    </article><article class="card" data-search="microsoft ai microsoftai ai labs">
+      <div class="num">11</div>
+      <div class="body"><div class="cat">AI Labs</div>
+      <h2>Microsoft AI</h2>
+      <a href="https://x.com/MicrosoftAI" target="_blank" rel="noopener">@@MicrosoftAI ↗</a></div>
+    </article><article class="card" data-search="cohere cohereai ai labs">
+      <div class="num">12</div>
+      <div class="body"><div class="cat">AI Labs</div>
+      <h2>Cohere</h2>
+      <a href="https://x.com/CohereAI" target="_blank" rel="noopener">@@CohereAI ↗</a></div>
+    </article><article class="card" data-search="perplexity perplexity_ai ai search">
+      <div class="num">13</div>
+      <div class="body"><div class="cat">AI Search</div>
+      <h2>Perplexity</h2>
+      <a href="https://x.com/perplexity_ai" target="_blank" rel="noopener">@@perplexity_ai ↗</a></div>
+    </article><article class="card" data-search="langchain langchainai ai frameworks">
+      <div class="num">14</div>
+      <div class="body"><div class="cat">AI Frameworks</div>
+      <h2>LangChain</h2>
+      <a href="https://x.com/LangChainAI" target="_blank" rel="noopener">@@LangChainAI ↗</a></div>
+    </article><article class="card" data-search="llamaindex llama_index ai frameworks">
+      <div class="num">15</div>
+      <div class="body"><div class="cat">AI Frameworks</div>
+      <h2>LlamaIndex</h2>
+      <a href="https://x.com/llama_index" target="_blank" rel="noopener">@@llama_index ↗</a></div>
+    </article><article class="card" data-search="replicate replicate ai platform">
+      <div class="num">16</div>
+      <div class="body"><div class="cat">AI Platform</div>
+      <h2>Replicate</h2>
+      <a href="https://x.com/replicate" target="_blank" rel="noopener">@@replicate ↗</a></div>
+    </article><article class="card" data-search="ollama ollama local ai">
+      <div class="num">17</div>
+      <div class="body"><div class="cat">Local AI</div>
+      <h2>Ollama</h2>
+      <a href="https://x.com/ollama" target="_blank" rel="noopener">@@ollama ↗</a></div>
+    </article><article class="card" data-search="lm studio lmstudioai local ai">
+      <div class="num">18</div>
+      <div class="body"><div class="cat">Local AI</div>
+      <h2>LM Studio</h2>
+      <a href="https://x.com/LMStudioAI" target="_blank" rel="noopener">@@LMStudioAI ↗</a></div>
+    </article><article class="card" data-search="runway runwayml ai video">
+      <div class="num">19</div>
+      <div class="body"><div class="cat">AI Video</div>
+      <h2>Runway</h2>
+      <a href="https://x.com/runwayml" target="_blank" rel="noopener">@@runwayml ↗</a></div>
+    </article><article class="card" data-search="midjourney midjourney ai image">
+      <div class="num">20</div>
+      <div class="body"><div class="cat">AI Image</div>
+      <h2>Midjourney</h2>
+      <a href="https://x.com/midjourney" target="_blank" rel="noopener">@@midjourney ↗</a></div>
+    </article><article class="card" data-search="stability ai stabilityai ai image">
+      <div class="num">21</div>
+      <div class="body"><div class="cat">AI Image</div>
+      <h2>Stability AI</h2>
+      <a href="https://x.com/StabilityAI" target="_blank" rel="noopener">@@StabilityAI ↗</a></div>
+    </article><article class="card" data-search="elevenlabs elevenlabsio ai audio">
+      <div class="num">22</div>
+      <div class="body"><div class="cat">AI Audio</div>
+      <h2>ElevenLabs</h2>
+      <a href="https://x.com/elevenlabsio" target="_blank" rel="noopener">@@elevenlabsio ↗</a></div>
+    </article><article class="card" data-search="suno suno_ai_ ai music">
+      <div class="num">23</div>
+      <div class="body"><div class="cat">AI Music</div>
+      <h2>Suno</h2>
+      <a href="https://x.com/suno_ai_" target="_blank" rel="noopener">@@suno_ai_ ↗</a></div>
+    </article><article class="card" data-search="cursor cursor_ai developer tools">
+      <div class="num">24</div>
+      <div class="body"><div class="cat">Developer Tools</div>
+      <h2>Cursor</h2>
+      <a href="https://x.com/cursor_ai" target="_blank" rel="noopener">@@cursor_ai ↗</a></div>
+    </article><article class="card" data-search="replit replit developer tools">
+      <div class="num">25</div>
+      <div class="body"><div class="cat">Developer Tools</div>
+      <h2>Replit</h2>
+      <a href="https://x.com/Replit" target="_blank" rel="noopener">@@Replit ↗</a></div>
+    </article><article class="card" data-search="windsurf windsurf_ai developer tools">
+      <div class="num">26</div>
+      <div class="body"><div class="cat">Developer Tools</div>
+      <h2>Windsurf</h2>
+      <a href="https://x.com/Windsurf_ai" target="_blank" rel="noopener">@@Windsurf_ai ↗</a></div>
+    </article><article class="card" data-search="github github open source">
+      <div class="num">27</div>
+      <div class="body"><div class="cat">Open Source</div>
+      <h2>GitHub</h2>
+      <a href="https://x.com/github" target="_blank" rel="noopener">@@github ↗</a></div>
+    </article><article class="card" data-search="github next githubnext open source">
+      <div class="num">28</div>
+      <div class="body"><div class="cat">Open Source</div>
+      <h2>GitHub Next</h2>
+      <a href="https://x.com/githubnext" target="_blank" rel="noopener">@@githubnext ↗</a></div>
+    </article><article class="card" data-search="jetbrains jetbrains developer tools">
+      <div class="num">29</div>
+      <div class="body"><div class="cat">Developer Tools</div>
+      <h2>JetBrains</h2>
+      <a href="https://x.com/jetbrains" target="_blank" rel="noopener">@@jetbrains ↗</a></div>
+    </article><article class="card" data-search="vercel vercel web development">
+      <div class="num">30</div>
+      <div class="body"><div class="cat">Web Development</div>
+      <h2>Vercel</h2>
+      <a href="https://x.com/vercel" target="_blank" rel="noopener">@@vercel ↗</a></div>
+    </article><article class="card" data-search="cloudflare cloudflare cloud / web">
+      <div class="num">31</div>
+      <div class="body"><div class="cat">Cloud / Web</div>
+      <h2>Cloudflare</h2>
+      <a href="https://x.com/Cloudflare" target="_blank" rel="noopener">@@Cloudflare ↗</a></div>
+    </article><article class="card" data-search="docker docker developer tools">
+      <div class="num">32</div>
+      <div class="body"><div class="cat">Developer Tools</div>
+      <h2>Docker</h2>
+      <a href="https://x.com/docker" target="_blank" rel="noopener">@@docker ↗</a></div>
+    </article><article class="card" data-search="kubernetes kubernetesio cloud / devops">
+      <div class="num">33</div>
+      <div class="body"><div class="cat">Cloud / DevOps</div>
+      <h2>Kubernetes</h2>
+      <a href="https://x.com/kubernetesio" target="_blank" rel="noopener">@@kubernetesio ↗</a></div>
+    </article><article class="card" data-search="aws awscloud cloud">
+      <div class="num">34</div>
+      <div class="body"><div class="cat">Cloud</div>
+      <h2>AWS</h2>
+      <a href="https://x.com/awscloud" target="_blank" rel="noopener">@@awscloud ↗</a></div>
+    </article><article class="card" data-search="google cloud googlecloud cloud">
+      <div class="num">35</div>
+      <div class="body"><div class="cat">Cloud</div>
+      <h2>Google Cloud</h2>
+      <a href="https://x.com/googlecloud" target="_blank" rel="noopener">@@googlecloud ↗</a></div>
+    </article><article class="card" data-search="microsoft azure azure cloud">
+      <div class="num">36</div>
+      <div class="body"><div class="cat">Cloud</div>
+      <h2>Microsoft Azure</h2>
+      <a href="https://x.com/Azure" target="_blank" rel="noopener">@@Azure ↗</a></div>
+    </article><article class="card" data-search="meta ai research metaai ai research">
+      <div class="num">37</div>
+      <div class="body"><div class="cat">AI Research</div>
+      <h2>Meta AI Research</h2>
+      <a href="https://x.com/MetaAI" target="_blank" rel="noopener">@@MetaAI ↗</a></div>
+    </article><article class="card" data-search="bair berkeley_ai ai research">
+      <div class="num">38</div>
+      <div class="body"><div class="cat">AI Research</div>
+      <h2>BAIR</h2>
+      <a href="https://x.com/berkeley_ai" target="_blank" rel="noopener">@@berkeley_ai ↗</a></div>
+    </article><article class="card" data-search="stanford ai lab stanfordailab ai research">
+      <div class="num">39</div>
+      <div class="body"><div class="cat">AI Research</div>
+      <h2>Stanford AI Lab</h2>
+      <a href="https://x.com/StanfordAILab" target="_blank" rel="noopener">@@StanfordAILab ↗</a></div>
+    </article><article class="card" data-search="stanford hai stanfordhai ai research">
+      <div class="num">40</div>
+      <div class="body"><div class="cat">AI Research</div>
+      <h2>Stanford HAI</h2>
+      <a href="https://x.com/StanfordHAI" target="_blank" rel="noopener">@@StanfordHAI ↗</a></div>
+    </article><article class="card" data-search="mit csail mit_csail ai research">
+      <div class="num">41</div>
+      <div class="body"><div class="cat">AI Research</div>
+      <h2>MIT CSAIL</h2>
+      <a href="https://x.com/MIT_CSAIL" target="_blank" rel="noopener">@@MIT_CSAIL ↗</a></div>
+    </article><article class="card" data-search="allen ai allen_ai ai research">
+      <div class="num">42</div>
+      <div class="body"><div class="cat">AI Research</div>
+      <h2>Allen AI</h2>
+      <a href="https://x.com/allen_ai" target="_blank" rel="noopener">@@allen_ai ↗</a></div>
+    </article><article class="card" data-search="allen institute for ai allenai ai research">
+      <div class="num">43</div>
+      <div class="body"><div class="cat">AI Research</div>
+      <h2>Allen Institute for AI</h2>
+      <a href="https://x.com/allenai" target="_blank" rel="noopener">@@allenai ↗</a></div>
+    </article><article class="card" data-search="mila mila_quebec ai research">
+      <div class="num">44</div>
+      <div class="body"><div class="cat">AI Research</div>
+      <h2>Mila</h2>
+      <a href="https://x.com/Mila_Quebec" target="_blank" rel="noopener">@@Mila_Quebec ↗</a></div>
+    </article><article class="card" data-search="fair fair_data ai research">
+      <div class="num">45</div>
+      <div class="body"><div class="cat">AI Research</div>
+      <h2>FAIR</h2>
+      <a href="https://x.com/FAIR_Data" target="_blank" rel="noopener">@@FAIR_Data ↗</a></div>
+    </article><article class="card" data-search="deepmind deepmind ai research">
+      <div class="num">46</div>
+      <div class="body"><div class="cat">AI Research</div>
+      <h2>DeepMind</h2>
+      <a href="https://x.com/DeepMind" target="_blank" rel="noopener">@@DeepMind ↗</a></div>
+    </article><article class="card" data-search="google research googleresearch ai research">
+      <div class="num">47</div>
+      <div class="body"><div class="cat">AI Research</div>
+      <h2>Google Research</h2>
+      <a href="https://x.com/GoogleResearch" target="_blank" rel="noopener">@@GoogleResearch ↗</a></div>
+    </article><article class="card" data-search="microsoft research msftresearch ai research">
+      <div class="num">48</div>
+      <div class="body"><div class="cat">AI Research</div>
+      <h2>Microsoft Research</h2>
+      <a href="https://x.com/MSFTResearch" target="_blank" rel="noopener">@@MSFTResearch ↗</a></div>
+    </article><article class="card" data-search="andrej karpathy karpathy ai educators">
+      <div class="num">49</div>
+      <div class="body"><div class="cat">AI Educators</div>
+      <h2>Andrej Karpathy</h2>
+      <a href="https://x.com/karpathy" target="_blank" rel="noopener">@@karpathy ↗</a></div>
+    </article><article class="card" data-search="andrew ng andrewyng ai educators">
+      <div class="num">50</div>
+      <div class="body"><div class="cat">AI Educators</div>
+      <h2>Andrew Ng</h2>
+      <a href="https://x.com/AndrewYNg" target="_blank" rel="noopener">@@AndrewYNg ↗</a></div>
+    </article><article class="card" data-search="yann lecun ylecun ai researchers">
+      <div class="num">51</div>
+      <div class="body"><div class="cat">AI Researchers</div>
+      <h2>Yann LeCun</h2>
+      <a href="https://x.com/ylecun" target="_blank" rel="noopener">@@ylecun ↗</a></div>
+    </article><article class="card" data-search="françois chollet fchollet ai researchers">
+      <div class="num">52</div>
+      <div class="body"><div class="cat">AI Researchers</div>
+      <h2>François Chollet</h2>
+      <a href="https://x.com/fchollet" target="_blank" rel="noopener">@@fchollet ↗</a></div>
+    </article><article class="card" data-search="geoffrey hinton geoffreyhinton ai researchers">
+      <div class="num">53</div>
+      <div class="body"><div class="cat">AI Researchers</div>
+      <h2>Geoffrey Hinton</h2>
+      <a href="https://x.com/GeoffreyHinton" target="_blank" rel="noopener">@@GeoffreyHinton ↗</a></div>
+    </article><article class="card" data-search="jeff dean jeffdean ai researchers">
+      <div class="num">54</div>
+      <div class="body"><div class="cat">AI Researchers</div>
+      <h2>Jeff Dean</h2>
+      <a href="https://x.com/JeffDean" target="_blank" rel="noopener">@@JeffDean ↗</a></div>
+    </article><article class="card" data-search="jim fan drjimfan ai researchers">
+      <div class="num">55</div>
+      <div class="body"><div class="cat">AI Researchers</div>
+      <h2>Jim Fan</h2>
+      <a href="https://x.com/DrJimFan" target="_blank" rel="noopener">@@DrJimFan ↗</a></div>
+    </article><article class="card" data-search="simon willison simonw ai developers">
+      <div class="num">56</div>
+      <div class="body"><div class="cat">AI Developers</div>
+      <h2>Simon Willison</h2>
+      <a href="https://x.com/simonw" target="_blank" rel="noopener">@@simonw ↗</a></div>
+    </article><article class="card" data-search="sebastian raschka rasbt ai educators">
+      <div class="num">57</div>
+      <div class="body"><div class="cat">AI Educators</div>
+      <h2>Sebastian Raschka</h2>
+      <a href="https://x.com/rasbt" target="_blank" rel="noopener">@@rasbt ↗</a></div>
+    </article><article class="card" data-search="chip huyen chipro ai educators">
+      <div class="num">58</div>
+      <div class="body"><div class="cat">AI Educators</div>
+      <h2>Chip Huyen</h2>
+      <a href="https://x.com/chipro" target="_blank" rel="noopener">@@chipro ↗</a></div>
+    </article><article class="card" data-search="ethan mollick emollick ai educators">
+      <div class="num">59</div>
+      <div class="body"><div class="cat">AI Educators</div>
+      <h2>Ethan Mollick</h2>
+      <a href="https://x.com/emollick" target="_blank" rel="noopener">@@emollick ↗</a></div>
+    </article><article class="card" data-search="jeremy howard jeremyphoward ai educators">
+      <div class="num">60</div>
+      <div class="body"><div class="cat">AI Educators</div>
+      <h2>Jeremy Howard</h2>
+      <a href="https://x.com/jeremyphoward" target="_blank" rel="noopener">@@jeremyphoward ↗</a></div>
+    </article><article class="card" data-search="françois fleuret fleuret ai researchers">
+      <div class="num">61</div>
+      <div class="body"><div class="cat">AI Researchers</div>
+      <h2>François Fleuret</h2>
+      <a href="https://x.com/fleuret" target="_blank" rel="noopener">@@fleuret ↗</a></div>
+    </article><article class="card" data-search="lilian weng lilianweng ai researchers">
+      <div class="num">62</div>
+      <div class="body"><div class="cat">AI Researchers</div>
+      <h2>Lilian Weng</h2>
+      <a href="https://x.com/lilianweng" target="_blank" rel="noopener">@@lilianweng ↗</a></div>
+    </article><article class="card" data-search="jason wei _jasonwei ai researchers">
+      <div class="num">63</div>
+      <div class="body"><div class="cat">AI Researchers</div>
+      <h2>Jason Wei</h2>
+      <a href="https://x.com/_jasonwei" target="_blank" rel="noopener">@@_jasonwei ↗</a></div>
+    </article><article class="card" data-search="noam brown polynoamial ai researchers">
+      <div class="num">64</div>
+      <div class="body"><div class="cat">AI Researchers</div>
+      <h2>Noam Brown</h2>
+      <a href="https://x.com/polynoamial" target="_blank" rel="noopener">@@polynoamial ↗</a></div>
+    </article><article class="card" data-search="dario amodei darioamodei ai leaders">
+      <div class="num">65</div>
+      <div class="body"><div class="cat">AI Leaders</div>
+      <h2>Dario Amodei</h2>
+      <a href="https://x.com/DarioAmodei" target="_blank" rel="noopener">@@DarioAmodei ↗</a></div>
+    </article><article class="card" data-search="sam altman sama ai leaders">
+      <div class="num">66</div>
+      <div class="body"><div class="cat">AI Leaders</div>
+      <h2>Sam Altman</h2>
+      <a href="https://x.com/sama" target="_blank" rel="noopener">@@sama ↗</a></div>
+    </article><article class="card" data-search="demis hassabis demishassabis ai leaders">
+      <div class="num">67</div>
+      <div class="body"><div class="cat">AI Leaders</div>
+      <h2>Demis Hassabis</h2>
+      <a href="https://x.com/demishassabis" target="_blank" rel="noopener">@@demishassabis ↗</a></div>
+    </article><article class="card" data-search="aravind srinivas aravsrinivas ai leaders">
+      <div class="num">68</div>
+      <div class="body"><div class="cat">AI Leaders</div>
+      <h2>Aravind Srinivas</h2>
+      <a href="https://x.com/AravSrinivas" target="_blank" rel="noopener">@@AravSrinivas ↗</a></div>
+    </article><article class="card" data-search="arthur mensch arthurmensch ai leaders">
+      <div class="num">69</div>
+      <div class="body"><div class="cat">AI Leaders</div>
+      <h2>Arthur Mensch</h2>
+      <a href="https://x.com/arthurmensch" target="_blank" rel="noopener">@@arthurmensch ↗</a></div>
+    </article><article class="card" data-search="aidan gomez aidangomez ai leaders">
+      <div class="num">70</div>
+      <div class="body"><div class="cat">AI Leaders</div>
+      <h2>Aidan Gomez</h2>
+      <a href="https://x.com/aidangomez" target="_blank" rel="noopener">@@aidangomez ↗</a></div>
+    </article><article class="card" data-search="jensen huang jensenhuang ai leaders">
+      <div class="num">71</div>
+      <div class="body"><div class="cat">AI Leaders</div>
+      <h2>Jensen Huang</h2>
+      <a href="https://x.com/JensenHuang" target="_blank" rel="noopener">@@JensenHuang ↗</a></div>
+    </article><article class="card" data-search="satya nadella satyanadella tech leaders">
+      <div class="num">72</div>
+      <div class="body"><div class="cat">Tech Leaders</div>
+      <h2>Satya Nadella</h2>
+      <a href="https://x.com/satyanadella" target="_blank" rel="noopener">@@satyanadella ↗</a></div>
+    </article><article class="card" data-search="sundar pichai sundarpichai tech leaders">
+      <div class="num">73</div>
+      <div class="body"><div class="cat">Tech Leaders</div>
+      <h2>Sundar Pichai</h2>
+      <a href="https://x.com/sundarpichai" target="_blank" rel="noopener">@@sundarpichai ↗</a></div>
+    </article><article class="card" data-search="elon musk elonmusk tech leaders">
+      <div class="num">74</div>
+      <div class="body"><div class="cat">Tech Leaders</div>
+      <h2>Elon Musk</h2>
+      <a href="https://x.com/elonmusk" target="_blank" rel="noopener">@@elonmusk ↗</a></div>
+    </article><article class="card" data-search="lex fridman lexfridman ai / podcasts">
+      <div class="num">75</div>
+      <div class="body"><div class="cat">AI / Podcasts</div>
+      <h2>Lex Fridman</h2>
+      <a href="https://x.com/lexfridman" target="_blank" rel="noopener">@@lexfridman ↗</a></div>
+    </article><article class="card" data-search="gary marcus garymarcus ai commentary">
+      <div class="num">76</div>
+      <div class="body"><div class="cat">AI Commentary</div>
+      <h2>Gary Marcus</h2>
+      <a href="https://x.com/GaryMarcus" target="_blank" rel="noopener">@@GaryMarcus ↗</a></div>
+    </article><article class="card" data-search="emily bender emilymbender ai commentary">
+      <div class="num">77</div>
+      <div class="body"><div class="cat">AI Commentary</div>
+      <h2>Emily Bender</h2>
+      <a href="https://x.com/emilymbender" target="_blank" rel="noopener">@@emilymbender ↗</a></div>
+    </article><article class="card" data-search="françois caron fcaron ai research">
+      <div class="num">78</div>
+      <div class="body"><div class="cat">AI Research</div>
+      <h2>François Caron</h2>
+      <a href="https://x.com/fcaron" target="_blank" rel="noopener">@@fcaron ↗</a></div>
+    </article><article class="card" data-search="ak _akhaliq ai news">
+      <div class="num">79</div>
+      <div class="body"><div class="cat">AI News</div>
+      <h2>AK</h2>
+      <a href="https://x.com/_akhaliq" target="_blank" rel="noopener">@@_akhaliq ↗</a></div>
+    </article><article class="card" data-search="ai pub ai__pub ai news">
+      <div class="num">80</div>
+      <div class="body"><div class="cat">AI News</div>
+      <h2>AI Pub</h2>
+      <a href="https://x.com/ai__pub" target="_blank" rel="noopener">@@ai__pub ↗</a></div>
+    </article><article class="card" data-search="the ai scientist ai_scientist ai research">
+      <div class="num">81</div>
+      <div class="body"><div class="cat">AI Research</div>
+      <h2>The AI Scientist</h2>
+      <a href="https://x.com/AI_Scientist" target="_blank" rel="noopener">@@AI_Scientist ↗</a></div>
+    </article><article class="card" data-search="weights &amp; biases weights_biases ml tools">
+      <div class="num">82</div>
+      <div class="body"><div class="cat">ML Tools</div>
+      <h2>Weights &amp; Biases</h2>
+      <a href="https://x.com/weights_biases" target="_blank" rel="noopener">@@weights_biases ↗</a></div>
+    </article><article class="card" data-search="mlflow mlflow ml tools">
+      <div class="num">83</div>
+      <div class="body"><div class="cat">ML Tools</div>
+      <h2>MLflow</h2>
+      <a href="https://x.com/mlflow" target="_blank" rel="noopener">@@mlflow ↗</a></div>
+    </article><article class="card" data-search="pytorch pytorch ml frameworks">
+      <div class="num">84</div>
+      <div class="body"><div class="cat">ML Frameworks</div>
+      <h2>PyTorch</h2>
+      <a href="https://x.com/PyTorch" target="_blank" rel="noopener">@@PyTorch ↗</a></div>
+    </article><article class="card" data-search="tensorflow tensorflow ml frameworks">
+      <div class="num">85</div>
+      <div class="body"><div class="cat">ML Frameworks</div>
+      <h2>TensorFlow</h2>
+      <a href="https://x.com/tensorflow" target="_blank" rel="noopener">@@tensorflow ↗</a></div>
+    </article><article class="card" data-search="keras keras_io ml frameworks">
+      <div class="num">86</div>
+      <div class="body"><div class="cat">ML Frameworks</div>
+      <h2>Keras</h2>
+      <a href="https://x.com/keras_io" target="_blank" rel="noopener">@@keras_io ↗</a></div>
+    </article><article class="card" data-search="scikit-learn scikit_learn ml frameworks">
+      <div class="num">87</div>
+      <div class="body"><div class="cat">ML Frameworks</div>
+      <h2>scikit-learn</h2>
+      <a href="https://x.com/scikit_learn" target="_blank" rel="noopener">@@scikit_learn ↗</a></div>
+    </article><article class="card" data-search="fast.ai fastdotai ai education">
+      <div class="num">88</div>
+      <div class="body"><div class="cat">AI Education</div>
+      <h2>fast.ai</h2>
+      <a href="https://x.com/fastdotai" target="_blank" rel="noopener">@@fastdotai ↗</a></div>
+    </article><article class="card" data-search="gradio gradioml ai tools">
+      <div class="num">89</div>
+      <div class="body"><div class="cat">AI Tools</div>
+      <h2>Gradio</h2>
+      <a href="https://x.com/GradioML" target="_blank" rel="noopener">@@GradioML ↗</a></div>
+    </article><article class="card" data-search="streamlit streamlit ai tools">
+      <div class="num">90</div>
+      <div class="body"><div class="cat">AI Tools</div>
+      <h2>Streamlit</h2>
+      <a href="https://x.com/streamlit" target="_blank" rel="noopener">@@streamlit ↗</a></div>
+    </article><article class="card" data-search="modal modal_labs ai infrastructure">
+      <div class="num">91</div>
+      <div class="body"><div class="cat">AI Infrastructure</div>
+      <h2>Modal</h2>
+      <a href="https://x.com/modal_labs" target="_blank" rel="noopener">@@modal_labs ↗</a></div>
+    </article><article class="card" data-search="together ai togethercompute ai infrastructure">
+      <div class="num">92</div>
+      <div class="body"><div class="cat">AI Infrastructure</div>
+      <h2>Together AI</h2>
+      <a href="https://x.com/togethercompute" target="_blank" rel="noopener">@@togethercompute ↗</a></div>
+    </article><article class="card" data-search="groq groqinc ai hardware">
+      <div class="num">93</div>
+      <div class="body"><div class="cat">AI Hardware</div>
+      <h2>Groq</h2>
+      <a href="https://x.com/GroqInc" target="_blank" rel="noopener">@@GroqInc ↗</a></div>
+    </article><article class="card" data-search="amd amd ai hardware">
+      <div class="num">94</div>
+      <div class="body"><div class="cat">AI Hardware</div>
+      <h2>AMD</h2>
+      <a href="https://x.com/AMD" target="_blank" rel="noopener">@@AMD ↗</a></div>
+    </article><article class="card" data-search="intel intel ai hardware">
+      <div class="num">95</div>
+      <div class="body"><div class="cat">AI Hardware</div>
+      <h2>Intel</h2>
+      <a href="https://x.com/intel" target="_blank" rel="noopener">@@intel ↗</a></div>
+    </article><article class="card" data-search="qualcomm qualcomm ai hardware">
+      <div class="num">96</div>
+      <div class="body"><div class="cat">AI Hardware</div>
+      <h2>Qualcomm</h2>
+      <a href="https://x.com/Qualcomm" target="_blank" rel="noopener">@@Qualcomm ↗</a></div>
+    </article><article class="card" data-search="scale ai scale_ai ai data">
+      <div class="num">97</div>
+      <div class="body"><div class="cat">AI Data</div>
+      <h2>Scale AI</h2>
+      <a href="https://x.com/scale_ai" target="_blank" rel="noopener">@@scale_ai ↗</a></div>
+    </article><article class="card" data-search="databricks databricks data / ai">
+      <div class="num">98</div>
+      <div class="body"><div class="cat">Data / AI</div>
+      <h2>Databricks</h2>
+      <a href="https://x.com/databricks" target="_blank" rel="noopener">@@databricks ↗</a></div>
+    </article><article class="card" data-search="snowflake snowflake data / ai">
+      <div class="num">99</div>
+      <div class="body"><div class="cat">Data / AI</div>
+      <h2>Snowflake</h2>
+      <a href="https://x.com/Snowflake" target="_blank" rel="noopener">@@Snowflake ↗</a></div>
+    </article><article class="card" data-search="mozilla mozilla open source / web">
+      <div class="num">100</div>
+      <div class="body"><div class="cat">Open Source / Web</div>
+      <h2>Mozilla</h2>
+      <a href="https://x.com/mozilla" target="_blank" rel="noopener">@@mozilla ↗</a></div>
+    </article></main>
+<footer>Generated from the same 100-page directory used by the PySide6 application.</footer>
+</div>
+<script>
+const search=document.getElementById("search"), cards=[...document.querySelectorAll(".card")], result=document.getElementById("result");
+function filter(){const q=search.value.toLowerCase().trim();let n=0;cards.forEach(c=>{const ok=c.dataset.search.includes(q);c.style.display=ok?"flex":"none";if(ok)n++});result.textContent=q?` · ${n} result${n===1?"":"s"}`:"";}
+search.addEventListener("input",filter);
+</script>
+</body></html>
